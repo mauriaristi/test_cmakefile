@@ -27,17 +27,24 @@ int main (int argc, char *argv[])
   double inputValue = atof(argv[1]);
 
 #ifdef USE_MYMATH
-  double outputValue = mysqrt(inputValue);
+  double outputValue1 = mysqrt(inputValue);
+  double outputValue2 = mylog(inputValue);
 #else
-  double outputValue = sqrt(inputValue);
+  double outputValue1 = sqrt(inputValue);
+  double outputValue2 = log(inputValue);
 #endif
   
+  
 #ifdef USE_MYMATH
-  fprintf(stdout,"[USING MYSQRT] The square root of %g is %g\n",
-          inputValue, outputValue);
+  fprintf(stdout,"[USING MYMATH] The square root of %g is %g\n",
+          inputValue, outputValue1);
+  fprintf(stdout,"[USING MYMATH] The log of %g is %g\n",
+          inputValue, outputValue2);
 #else
-    fprintf(stdout,"[USING STD MATH] The square root of %g is %g\n",
-          inputValue, outputValue);
+  fprintf(stdout,"[USING STD MATH] The square root of %g is %g\n",
+        inputValue, outputValue1);
+  fprintf(stdout,"[USING STD MATH] The log of %g is %g\n",
+        inputValue, outputValue2);
 #endif
 
   return 0;
